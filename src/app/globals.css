@@ -476,3 +476,4 @@ button { font: inherit; color: inherit; }
   .redact .bar { flex: 1; }
 }
 .work-gap { font-family: var(--f-mono); font-size: 12px; color: var(--muted); padding: 10px 0; border-top: 1px dashed var(--line); }
+.hero-right { display: flex; flex-direction: column; gap: 24px; }

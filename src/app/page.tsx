@@ -1,5 +1,5 @@
 import { Link } from "next-view-transitions";
-import { copy, marquee } from "@/content/site";
+import { contact, copy, marquee } from "@/content/site";
 import { getLang, pick } from "@/lib/i18n";
 import { getSite } from "@/lib/data";
 import { ago, fmtDate, redactWidths, seqLabel } from "@/lib/format";
@@ -38,7 +38,18 @@ export default async function Home() {
                 <span key={m.k}>{m.k} — <b>{m.v}</b></span>
               ))}
             </div>
-            <p className="lede">{t.hero.lede}</p>
+            <div className="hero-right">
+              <p className="lede">{t.hero.lede}</p>
+              <div className="btn-row">
+                {!!(lang === "ko" ? process.env.HAS_RESUME_KO : process.env.HAS_RESUME_EN) && (
+                  <a href={t.contact.resumeHref} download className="btn btn-ink">{t.contact.resume} PDF ↓</a>
+                )}
+                {contact.links.map((l) => (
+                  <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="btn btn-line">{l.label} ↗</a>
+                ))}
+                <a href="#contact" className="btn btn-track">{lang === "ko" ? "연락하기" : "Contact"}</a>
+              </div>
+            </div>
           </div>
         </section>
       </main>
