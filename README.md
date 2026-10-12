@@ -21,9 +21,9 @@ Next.js 15 (App Router) + Upstash Redis. Vercel에 배포하는 걸 기준으로
 2. Vercel → **Add New → Project** → 저장소 선택 → Deploy.
 3. 프로젝트의 **Storage** 탭 → **Upstash for Redis** 연결 (무료 플랜 OK).
    `KV_REST_API_URL`, `KV_REST_API_TOKEN` 환경변수가 자동으로 들어옵니다.
-4. **Settings → Environment Variables** 에 두 개 추가:
-   - `ADMIN_PASSWORD` — 로그인 비밀번호 (길게)
-   - `SESSION_SECRET` — 32자 이상 랜덤 문자열 (`openssl rand -hex 32`)
+4. **Settings → Environment Variables** 에 추가:
+   - `ADMIN_PASSWORD` — 로그인 비밀번호 (길게, 12자 이상 권장)
+   - (선택) `SESSION_SECRET` — 32자 이상 랜덤 문자열. 없으면 비밀번호에서 자동으로 만듭니다.
 5. **Redeploy**. 끝.
 
 처음엔 `src/content/seed.ts`의 내용이 보이고, 로그인해서 무언가 저장하는 순간부터 Redis가 원본이 됩니다.

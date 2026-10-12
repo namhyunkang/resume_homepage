@@ -34,7 +34,7 @@ export async function login(_: FormState, fd: FormData): Promise<FormState> {
     return { error: "Wrong password." };
   }
   const token = await createToken();
-  if (!token) return { error: "SESSION_SECRET isn’t set (needs 16+ characters)." };
+  if (!token) return { error: "Session key unavailable — set ADMIN_PASSWORD." };
   const jar = await cookies();
   jar.set(SESSION_COOKIE, token, {
     httpOnly: true,

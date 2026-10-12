@@ -5,9 +5,15 @@ export const SESSION_DAYS = 30;
 
 const enc = new TextEncoder();
 
+/**
+ * Signing key: SESSION_SECRET if set, otherwise derived from ADMIN_PASSWORD
+ * (so changing the password also signs everyone out). Only one env var is required.
+ */
 function secret(): string | null {
   const s = process.env.SESSION_SECRET;
   if (s && s.length >= 16) return s;
+  const pw = process.env.ADMIN_PASSWORD;
+  if (pw) return `nhk-session-v1:${pw}`;
   if (process.env.NODE_ENV !== "production") return "dev-only-secret-change-me-please";
   return null;
 }
