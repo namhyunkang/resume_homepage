@@ -21,7 +21,6 @@ export default function Footer({ lang, admin }: { lang: Lang; admin: boolean }) 
           {contact.links.map((l) => (
             <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="btn btn-line">{l.label} ↗</a>
           ))}
-          <a href={`tel:${contact.tel}`} className="phone">{contact.phone}</a>
         </div>
       </div>
       <div className="footer-bottom">

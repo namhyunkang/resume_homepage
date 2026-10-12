@@ -37,7 +37,7 @@ const projects: Project[] = [
         symptom: "Burst reads from a 4×4 ToF sensor kept failing mid-evaluation.",
         trace:
           "The sensor code and the I2C address both checked out, so I put an oscilloscope on the bus. The clock was running slower than configured — an init routine in the in-house OS was quietly overwriting the I2C speed setting.",
-        fix: "Patched the routine, added diagnostic logs so the next person won’t need a scope to spot it, and pushed it to Git. Wrote a GUI to parse and plot the readings.",
+        fix: "Patched the routine, added diagnostic logs, and pushed the change to Git. Wrote a GUI to parse and plot the readings.",
         result:
           "Data came through clean. ToF was later dropped when the product changed direction; the habit of checking the wire before the code stayed.",
       },
@@ -45,7 +45,7 @@ const projects: Project[] = [
         symptom: "4×4 ToF 센서 평가 중 burst read가 계속 실패했습니다.",
         trace:
           "센서 코드와 I2C 주소에는 문제가 없어서 오실로스코프로 버스를 직접 찍어봤습니다. 클럭이 설정값보다 낮게 나오고 있었고, 원인은 사내 OS 초기화 루틴이 I2C 속도 설정을 조용히 덮어쓰던 것이었습니다.",
-        fix: "루틴을 패치하고, 다음 사람은 스코프 없이도 알 수 있게 진단 로그를 보강해 Git에 올렸습니다. 측정값을 파싱·시각화하는 GUI도 만들었습니다.",
+        fix: "루틴을 패치하고, 진단 로그를 보강해 Git에 올렸습니다. 측정값을 파싱·시각화하는 GUI도 만들었습니다.",
         result:
           "정상 수신을 확인했습니다. 이후 제품 방향이 바뀌면서 ToF는 채택되지 않았지만, ‘코드보다 선부터 본다’는 습관은 남았습니다.",
       },
@@ -53,7 +53,7 @@ const projects: Project[] = [
   }),
   p({
     id: "oht-web",
-    order: 1,
+    order: 2,
     co: { en: "CanTops", ko: "캔탑스" },
     year: "2024–",
     period: { en: "Aug 2024 — Present", ko: "2024.08 — 현재" },
@@ -93,7 +93,7 @@ const projects: Project[] = [
   }),
   p({
     id: "wlan",
-    order: 2,
+    order: 4,
     co: { en: "CanTops", ko: "캔탑스" },
     year: "2024–",
     period: { en: "Aug 2024 — Present", ko: "2024.08 — 현재" },
@@ -123,44 +123,61 @@ const projects: Project[] = [
     period: { en: "Aug 2024 — Present", ko: "2024.08 — 현재" },
     title: { en: "Sensor diagnostic tool", ko: "센서 진단 도구" },
     summary: {
-      en: "Live plots and raw-data analysis in C#, with reception, parsing and UI on separate threads so none of them waits on the others.",
-      ko: "수신·파싱·UI를 각각의 스레드로 나눠 서로 기다리지 않게 만든, C# 실시간 시각화·RAW 분석 도구.",
+      en: "A C# tool for live plots and raw-data analysis of sensor data arriving over 460,800-baud serial at 1 ms intervals.",
+      ko: "460,800 baud 직렬 통신으로 1ms마다 들어오는 센서 데이터를 실시간으로 보고 분석하는 C# 진단 도구.",
     },
-    tags: ["C#", "Multithreading"],
+    tags: ["C#", "Serial", "Multithreading"],
     built: {
       en: [
         "Built a C# diagnostic tool for live visualization and raw sensor-data analysis.",
         "Split reception, parsing and UI updates into independent threads, connected through a circular buffer and a queue.",
+        "Added live sensor values, charts and raw-data analysis views for equipment diagnostics.",
       ],
       ko: [
         "실시간 시각화와 RAW 센서 데이터 분석을 위한 C# 진단 도구를 만들었습니다.",
         "수신·파싱·UI 갱신을 독립 스레드로 분리하고, 원형 버퍼와 큐로 연결했습니다.",
+        "실시간 센서 값, 차트, 원시 데이터 분석 화면을 구현했습니다.",
       ],
     },
-    caseNotes: null,
+    caseNotes: {
+      en: {
+        symptom: "Sensor data arrived continuously — 460,800-baud serial, a new sample every 1 ms — and had to be parsed and shown on screen while it kept coming.",
+        trace: "Doing reception, parsing and drawing in one flow would tie them together, so the work needed a structure that kept each stage separate.",
+        fix: "Gave reception, parsing and UI updates their own threads, linked by a circular buffer and a queue.",
+        result: "A working tool for equipment diagnostics and raw sensor-data analysis. (1 ms is the input interval, not an end-to-end latency figure.)",
+      },
+      ko: {
+        symptom: "460,800 baud 직렬 통신으로 1ms마다 센서 데이터가 계속 들어오는 환경에서, 받으면서 동시에 파싱하고 화면에 보여줘야 했습니다.",
+        trace: "수신·파싱·화면 갱신을 한 흐름으로 처리하면 서로 묶이기 때문에, 단계별로 분리된 처리 구조가 필요했습니다.",
+        fix: "수신·파싱·UI 갱신을 각각 독립 스레드로 나누고, 원형 버퍼와 큐로 연결했습니다.",
+        result: "장비 진단과 원시 센서 데이터 분석에 쓰는 도구를 완성했습니다. (1ms는 입력 주기이며, 전체 처리 지연을 뜻하지 않습니다.)",
+      },
+    },
   }),
   p({
     id: "stb",
-    order: 4,
+    order: 1,
     co: { en: "Innopia", ko: "이노피아테크" },
     year: "2021–23",
     period: { en: "Apr 2021 — Sep 2023", ko: "2021.04 — 2023.09" },
-    title: { en: "Set-top box library redesign", ko: "셋톱박스 라이브러리 재설계" },
+    title: { en: "Set-top box software: library redesign & TR-069", ko: "셋톱박스 라이브러리 재설계 · TR-069" },
     summary: {
       en: "Pitched and carried out a redesign of a hard-coded legacy library. It shipped.",
       ko: "하드코딩된 레거시 라이브러리의 재설계를 먼저 제안하고 직접 진행했습니다. 출하 제품에 들어갔습니다.",
     },
-    tags: ["Java", "Android", "OOP"],
+    tags: ["Java", "C++", "Android", "Linux", "TR-069"],
     built: {
       en: [
         "Proposed a redesign of a legacy set-top box library whose hard-coded structure made every feature change painful.",
         "Reimplemented the existing Java code with object-oriented design to meet updated Android requirements.",
         "Reworked inter-app communication and the overall structure so future protocols could be added without another rewrite.",
+        "Developed and extended TR-069 services and device-management data models in C++ and Java on Linux/Android.",
       ],
       ko: [
         "기능 하나 바꾸기도 버거운 하드코딩 구조의 셋톱박스 라이브러리를 재설계하자고 먼저 제안했습니다.",
         "바뀐 Android 요구사항에 맞춰 기존 Java 코드를 객체지향 구조로 다시 구현했습니다.",
         "앱 간 통신 방식과 전체 구조를 손봐, 새 프로토콜이 생겨도 다시 갈아엎지 않도록 했습니다.",
+        "Linux·Android 환경에서 C++·Java로 TR-069 서비스와 장치 관리 데이터 모델을 구현·확장했습니다.",
       ],
     },
     caseNotes: {
@@ -179,44 +196,6 @@ const projects: Project[] = [
         result: "수정한 소프트웨어가 실제 출하 제품에 반영됐습니다.",
       },
     },
-  }),
-  p({
-    id: "tr069",
-    order: 5,
-    co: { en: "Innopia", ko: "이노피아테크" },
-    year: "2021–23",
-    period: { en: "Apr 2021 — Sep 2023", ko: "2021.04 — 2023.09" },
-    title: { en: "TR-069 device management", ko: "TR-069 장치 관리" },
-    summary: {
-      en: "TR-069 services and device-management data models for Linux/Android set-top boxes.",
-      ko: "Linux·Android 셋톱박스용 TR-069 서비스와 장치 관리 데이터 모델.",
-    },
-    tags: ["C++", "Java", "TR-069"],
-    built: {
-      en: ["Developed and extended TR-069 services and device-management data models in C++ and Java on Linux/Android."],
-      ko: ["Linux·Android 환경에서 C++·Java로 TR-069 서비스와 장치 관리 데이터 모델을 구현하고 확장했습니다."],
-    },
-    caseNotes: null,
-  }),
-  p({
-    id: "geom",
-    order: 6,
-    co: { en: "Fourth Logic", ko: "포스로직" },
-    year: "2020",
-    period: { en: "May 2020 — Sep 2020", ko: "2020.05 — 2020.09" },
-    title: { en: "Geometry for precision measurement", ko: "정밀 측정용 기하 연산" },
-    summary: {
-      en: "C++ geometry routines for an AI image-processing platform — polygon intersections, volumes involving spheres.",
-      ko: "AI 이미지 처리 플랫폼용 C++ 기하 연산 — 다각형 교차, 구가 얽힌 부피 계산.",
-    },
-    tags: ["C++", "Geometry"],
-    built: {
-      en: [
-        "Implemented and optimized C++ geometry routines for precision measurement in an AI image-processing platform, including polygon intersections and sphere-related volume calculations.",
-      ],
-      ko: ["AI 이미지 처리 플랫폼에서 다각형 교차, 구 관련 부피 계산 등 정밀 측정용 C++ 기하 연산을 구현하고 최적화했습니다."],
-    },
-    caseNotes: null,
   }),
 ];
 

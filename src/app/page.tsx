@@ -87,11 +87,14 @@ export default async function Home() {
             <p>{t.work.body}</p>
           </div>
           <div className="work-rows">
-            {t.work.items.map((w) => (
-              <div key={w.co} className="work-row">
-                <span className="co">{w.co}</span>
-                <span className="period">{w.period}</span>
-                <span className="role">{w.role}</span>
+            {t.work.items.map((w, i) => (
+              <div key={w.co}>
+                {i === 1 && <div className="work-gap">{t.work.gap}</div>}
+                <div className="work-row">
+                  <span className="co">{w.co}</span>
+                  <span className="period">{w.period}</span>
+                  <span className="role">{w.role}</span>
+                </div>
               </div>
             ))}
           </div>

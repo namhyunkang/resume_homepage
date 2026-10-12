@@ -3,10 +3,8 @@
 
 export const contact = {
   // Extra profile links shown in the footer. Add LinkedIn etc. here.
-  links: [{ label: "GitHub", href: "https://github.com/namhyunkang" }] as { label: string; href: string }[],
+  links: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/nam-hyun-kang-44bb78209/" }] as { label: string; href: string }[],
   email: "rkdskagus123@gmail.com",
-  phone: "+82 10 8757 2558",
-  tel: "+821087572558",
 };
 
 export const marquee = [
@@ -33,7 +31,7 @@ const en = {
     meta: [
       { k: "Experience", v: "5+ years" },
       { k: "Now", v: "Software Engineer, CanTops" },
-      { k: "Languages", v: "Korean · English" },
+      { k: "Languages", v: "Korean · English (native)" },
     ],
     status: (ago: string) => `notebook · last entry ${ago}`,
   },
@@ -49,11 +47,12 @@ const en = {
     title: "Experience",
     body:
       "Five-plus years writing software that lives close to hardware. Most of my work sits where firmware, the device OS and the people actually running the equipment meet — C++ on sensors, Java services on set-top boxes, web tools for monitoring rigs. I hand things over with test scenarios, so QA doesn’t have to guess what “done” means.",
+    gap: "Sep 2023 — Jul 2024: prepared a business of my own between Innopia and CanTops.",
     items: [
-      { co: "CanTops", role: "Software Engineer", period: "Aug 2024 — Present" },
-      { co: "Innopia Technologies", role: "Software Engineer", period: "Apr 2021 — Sep 2023" },
-      { co: "Fourth Logic", role: "Software Engineer", period: "May 2020 — Sep 2020" },
-      { co: "Unichal", role: "Software Engineer", period: "May 2018 — Jan 2019" },
+      { co: "CanTops", role: "Software Engineer · sensor firmware, diagnostics, equipment web", period: "Aug 2024 — Present" },
+      { co: "Innopia Technologies", role: "Software Engineer · Linux/Android set-top box software", period: "Apr 2021 — Sep 2023" },
+      { co: "Fourth Logic", role: "Software Engineer · C++ geometry for precision measurement", period: "May 2020 — Sep 2020" },
+      { co: "Unichal", role: "Software Engineer · firmware for in-house projects", period: "May 2018 — Jan 2019" },
     ],
   },
   skills: {
@@ -64,8 +63,9 @@ const en = {
     groups: [
       { k: "Languages", v: ["C", "C++", "Java", "Python", "JavaScript", "C#"] },
       { k: "Operating systems", v: ["Linux (Ubuntu)", "Android", "RTOS"] },
-      { k: "Protocols", v: ["I2C", "TR-069", "REST APIs", "RTSP", "WebRTC"] },
-      { k: "Dev & test", v: ["Git", "Code review", "Scenario testing", "Oscilloscope"] },
+      { k: "Interfaces & protocols", v: ["I2C", "Serial comms", "TR-069", "REST APIs", "RTSP", "WebRTC"] },
+      { k: "Debug & test", v: ["Oscilloscope", "Diagnostic logging", "Scenario testing", "Git", "Code review"] },
+      { k: "Tools", v: ["Visual Studio", "Eclipse", "Android Studio", "MediaMTX", "FastAPI"] },
     ],
   },
   notes: {
@@ -81,9 +81,9 @@ const en = {
   edu: {
     title: "Education · Certification",
     items: [
-      { k: "Education", v: "Dankook University — B.S., Mobile Systems Engineering" },
-      { k: "Also studied", v: "Simon Fraser University — Mechanical Engineering (no degree)" },
-      { k: "Certification", v: "Engineer Information Processing (2017)" },
+      { k: "Education · 2013–2018", v: "Dankook University — B.S., Mobile Systems Engineering" },
+      { k: "Also studied · 2009–2012", v: "Simon Fraser University (Canada) — Mechanical Engineering coursework, no degree" },
+      { k: "Certification · 2017", v: "Engineer Information Processing (정보처리기사)" },
     ],
   },
   contact: {
@@ -133,8 +133,8 @@ const ko: Copy = {
       "하드웨어와 맞물려 돌아가는 소프트웨어를 만듭니다. 센서 펌웨어부터 Linux·Android 장치 서비스, 장비를 지켜보는 모니터링 웹까지. 버그가 이유를 말해주지 않으면, 코드만 노려보지 않고 버스에 프로브부터 꽂아봅니다.",
     meta: [
       { k: "경력", v: "5년+" },
-      { k: "현재", v: "캔탑스 · 주임" },
-      { k: "언어", v: "한국어 · English" },
+      { k: "현재", v: "캔탑스 · 소프트웨어 개발" },
+      { k: "언어", v: "한국어 · 영어 (원어민 수준)" },
     ],
     status: (ago: string) => `노트 · 마지막 기록 ${ago}`,
   },
@@ -150,11 +150,12 @@ const ko: Copy = {
     title: "경력",
     body:
       "5년 넘게 하드웨어 가까이에서 일하는 소프트웨어를 만들어 왔습니다. 센서 위의 C++, 셋톱박스 위의 Java 서비스, 장비를 감시하는 웹 도구까지. 펌웨어와 장치 OS, 그리고 그 장비를 실제로 쓰는 사람 사이 어딘가가 제 자리입니다. 넘길 때는 시험 시나리오까지 챙겨서, QA가 ‘어디까지가 완료인지’ 추측하지 않게 합니다.",
+    gap: "2023.09 — 2024.07: 이노피아테크 퇴사 후 캔탑스 입사 전까지 개인사업을 준비했습니다.",
     items: [
-      { co: "캔탑스", role: "주임 · 소프트웨어 개발", period: "2024.08 — 현재" },
-      { co: "이노피아테크", role: "연구원", period: "2021.04 — 2023.09" },
-      { co: "포스로직", role: "연구원", period: "2020.05 — 2020.09" },
-      { co: "유니챌", role: "연구원", period: "2018.05 — 2019.01" },
+      { co: "캔탑스", role: "소프트웨어 개발 · 센서 펌웨어, 진단 도구, 장비 웹", period: "2024.08 — 현재" },
+      { co: "이노피아테크", role: "연구원 · Linux·Android 셋톱박스 소프트웨어", period: "2021.04 — 2023.09" },
+      { co: "포스로직", role: "연구원 · 정밀 측정용 C++ 기하 연산", period: "2020.05 — 2020.09" },
+      { co: "유니챌", role: "연구원 · 자사 프로젝트 펌웨어", period: "2018.05 — 2019.01" },
     ],
   },
   skills: {
@@ -165,8 +166,9 @@ const ko: Copy = {
     groups: [
       { k: "프로그래밍", v: ["C", "C++", "Java", "Python", "JavaScript", "C#"] },
       { k: "운영체제", v: ["Linux (Ubuntu)", "Android", "RTOS"] },
-      { k: "프로토콜", v: ["I2C", "TR-069", "REST APIs", "RTSP", "WebRTC"] },
-      { k: "개발 · 시험", v: ["Git", "Code review", "Scenario testing", "Oscilloscope"] },
+      { k: "인터페이스 · 프로토콜", v: ["I2C", "Serial comms", "TR-069", "REST APIs", "RTSP", "WebRTC"] },
+      { k: "디버깅 · 시험", v: ["Oscilloscope", "Diagnostic logging", "Scenario testing", "Git", "Code review"] },
+      { k: "도구", v: ["Visual Studio", "Eclipse", "Android Studio", "MediaMTX", "FastAPI"] },
     ],
   },
   notes: {
@@ -182,9 +184,9 @@ const ko: Copy = {
   edu: {
     title: "학력 · 자격",
     items: [
-      { k: "학력", v: "단국대학교 모바일시스템공학 학사" },
-      { k: "재학 이력", v: "Simon Fraser University 기계공학 (학위 미취득)" },
-      { k: "자격", v: "정보처리기사 (2017)" },
+      { k: "학력 · 2013–2018", v: "단국대학교 모바일시스템공학 학사" },
+      { k: "수학 · 2009–2012", v: "Simon Fraser University(캐나다) 기계공학 과정 수학, 학위 미취득" },
+      { k: "자격 · 2017.05", v: "정보처리기사" },
     ],
   },
   contact: {
