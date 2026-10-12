@@ -1,12 +1,16 @@
 import "server-only";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import type { L, Lang } from "./types";
 
 export const LANG_COOKIE = "nhk_lang";
 
 export async function getLang(): Promise<Lang> {
   const jar = await cookies();
-  return jar.get(LANG_COOKIE)?.value === "ko" ? "ko" : "en";
+  const saved = jar.get(LANG_COOKIE)?.value;
+  if (saved === "ko" || saved === "en") return saved;
+  // First visit: follow the browser — Korean browsers get Korean.
+  const al = (await headers()).get("accept-language") ?? "";
+  return /^\s*ko\b/i.test(al) ? "ko" : "en";
 }
 
 /** Pick the requested language, falling back to the other one if it's empty. */

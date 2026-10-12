@@ -2,6 +2,8 @@
 // everything here is edited in code.
 
 export const contact = {
+  // Extra profile links shown in the footer. Add LinkedIn etc. here.
+  links: [{ label: "GitHub", href: "https://github.com/namhyunkang" }] as { label: string; href: string }[],
   email: "rkdskagus123@gmail.com",
   phone: "+82 10 8757 2558",
   tel: "+821087572558",
@@ -68,9 +70,9 @@ const en = {
   },
   notes: {
     title: "Notebook",
-    sub: "Public entries are open. Private ones stay locked — they’re real, and they keep piling up.",
+    sub: "Public entries are open. The locked ones are internal work notes — client and company details stay private, but the log keeps growing.",
     count: (pub: number, priv: number) => `${pub} public · ${priv} private`,
-    locked: "Private entry. It’s in here — just not for reading.",
+    locked: "Internal note — client/company details, so it stays private. It’s there, just not public.",
     empty: "Nothing public yet.",
     activity: "last 26 weeks",
     general: "General",
@@ -169,9 +171,9 @@ const ko: Copy = {
   },
   notes: {
     title: "노트",
-    sub: "공개 노트는 열어두고, 비공개 노트는 잠가둡니다. 내용은 못 보여드려도 꾸준히 쌓이는 중이에요.",
+    sub: "공개 노트는 열어두고, 사내·고객사 내용이 얽힌 노트는 잠가둡니다. 내용은 못 보여드려도 기록은 꾸준히 쌓이는 중이에요.",
     count: (pub: number, priv: number) => `공개 ${pub} · 비공개 ${priv}`,
-    locked: "비공개 노트입니다. 있긴 있어요, 읽을 수만 없을 뿐.",
+    locked: "사내·고객사 내용이 담긴 비공개 노트예요. 있긴 있어요, 공개만 안 할 뿐.",
     empty: "아직 공개된 노트가 없습니다.",
     activity: "최근 26주",
     general: "일반",

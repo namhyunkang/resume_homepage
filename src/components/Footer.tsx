@@ -18,6 +18,9 @@ export default function Footer({ lang, admin }: { lang: Lang; admin: boolean }) 
           <CopyEmail email={contact.email} label={t.contact.copy} done={t.contact.copied} />
           <a href={`mailto:${contact.email}`} className="btn btn-ink">{t.contact.mail} →</a>
           {hasResume && <a href={t.contact.resumeHref} download className="btn btn-line">{t.contact.resume} ↓</a>}
+          {contact.links.map((l) => (
+            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="btn btn-line">{l.label} ↗</a>
+          ))}
           <a href={`tel:${contact.tel}`} className="phone">{contact.phone}</a>
         </div>
       </div>
