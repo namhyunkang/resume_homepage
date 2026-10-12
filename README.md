@@ -1,5 +1,7 @@
 # nhk — 개인 홈페이지
 
+🔗 **Live:** https://resume-homepage-psi.vercel.app
+
 Next.js 15 (App Router) + Upstash Redis. Vercel에 배포하는 걸 기준으로 만들었습니다.
 
 ## 기능
