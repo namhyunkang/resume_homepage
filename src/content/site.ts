@@ -3,7 +3,7 @@
 
 export const contact = {
   // Extra profile links shown in the footer. Add LinkedIn etc. here.
-  links: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/nam-hyun-kang-44bb78209/" }] as { label: string; href: string }[],
+  links: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/namhyunkang/" }] as { label: string; href: string }[],
   email: "rkdskagus123@gmail.com",
 };
 
